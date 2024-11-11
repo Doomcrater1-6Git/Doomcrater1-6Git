@@ -24,11 +24,11 @@ echo 4 - Musician
 echo 5 - Sapper
 echo.
 choice /n /c:12345
-if errorlevel 5 goto buypriv
-if errorlevel 4 goto buyoffi
+if errorlevel 5 goto buysapp
+if errorlevel 4 goto buymusi
 if errorlevel 3 goto buyseam
-if errorlevel 2 goto buymusi
-if errorlevel 1 goto buysapp
+if errorlevel 2 goto buyoffi
+if errorlevel 1 goto buypriv
 
 :buypriv
 echo "Welcome, welcome! Please, take a look around!"
