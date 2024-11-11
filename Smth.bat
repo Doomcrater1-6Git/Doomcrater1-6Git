@@ -1,9 +1,8 @@
 @echo off
+:back
 echo.
-echo Bubbles' store
+echo The Shop
 echo (You have 2,500 Francs)
-echo.
-echo Welcome, welcome!
 echo.
 echo A: Buy weapons
 echo B: Purchase cosmetics
@@ -16,9 +15,25 @@ if errorlevel 1 goto buy
 
 :buy
 cls
-echo Welcome, welcome! Please, take a look around!
+echo "Welcome, welcome! Please choose a class."
 echo.
-echo (You have 2,500 Francs.)
+echo 1 - Private
+echo 2 - Officer
+echo 3 - Seaman
+echo 4 - Musician
+echo 5 - Sapper
+echo.
+choice /n /c:12345
+if errorlevel 5 goto buypriv
+if errorlevel 4 goto buyoffi
+if errorlevel 3 goto buyseam
+if errorlevel 2 goto buymusi
+if errorlevel 1 goto buysapp
+
+:buypriv
+echo "Welcome, welcome! Please, take a look around!"
+echo.
+echo (You have 2,500 Francs)
 echo.
 echo 0 - Back
 echo 1 - Musket
@@ -39,5 +54,34 @@ if errorlevel 5 goto Alreadyhave
 if errorlevel 4 goto PurLanc
 if errorlevel 3 goto PurHors
 if errorlevel 2 goto PurRifl
-if errorlevel 1 goto ALreadyhave
+if errorlevel 1 goto Alreadyhave
 if errorlevel 0 goto getout
+
+:getout
+goto back
+
+:AlreadyHave
+echo You already have this weapon in your inventory.
+pause
+goto buypriv
+
+:PurRifl
+echo     Rifle
+echo     Base Damage  195 / pellet
+echo     Base Reload  14 seconds
+echo     Penetration  15
+echo     Range        1500 studs
+echo     Spread       0.01 degrees
+echo Would you like to buy this weapon? This costs
+echo                500 Francs.
+echo Y - Yes!
+echo N - No.
+echo.
+choice /c:yn "Yes, No"
+if errorlevel 2 goto purchased
+if errorlevel 1 goto buypriv
+
+:purchased
+echo "There you go."
+pause
+goto buypriv
